@@ -1,12 +1,12 @@
 <template>
-    <div>
-        <h1>USERS VUE</h1>
-    </div>
+    <h1>
+        New messages component
+    </h1>
 </template>
 
 <script>
 export default {
-    name: 'Users',
+    name: "NewMessage"
 }
 </script>
 

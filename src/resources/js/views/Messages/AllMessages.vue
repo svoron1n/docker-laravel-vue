@@ -1,12 +1,12 @@
 <template>
     <div>
-        <h1>USERS VUE</h1>
+        <h1>Messages component</h1>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Users',
+    name: "Messages"
 }
 </script>
 

@@ -1,12 +1,10 @@
 <template>
-    <div>
-        <h1>About Component</h1>
-    </div>
+    <h1>Profile component</h1>
 </template>
 
 <script>
 export default {
-    name: "Aboue"
+    name: "Profile"
 }
 </script>
 

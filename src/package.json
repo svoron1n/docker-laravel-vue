@@ -24,5 +24,10 @@
         "vue": "^2.6.12",
         "vue-router": "^3.4.5",
         "vue-template-compiler": "^2.6.12"
+    },
+    "dependencies": {
+        "bootstrap-vue": "^2.17.3",
+        "mdbvue": "^6.7.1",
+        "vuelidate": "^0.7.5"
     }
 }

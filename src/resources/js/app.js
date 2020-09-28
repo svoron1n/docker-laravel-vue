@@ -10,6 +10,14 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router';
 import router from './router';
 import App from './components/App';
+import { BootstrapVue, IconsPlugin, BootstrapVueIcons, ToastPlugin } from 'bootstrap-vue';
+
+import dateFilter from './filters/date.filter';
+import messagePlugin from './utils/message.plugin';
+
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+import 'bootstrap-vue/dist/bootstrap-vue-icons.min.css';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -19,6 +27,16 @@ import App from './components/App';
 
 
 Vue.use(VueRouter);
+
+// Install BootstrapVue
+Vue.use(BootstrapVue);
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin);
+Vue.use(BootstrapVueIcons);
+Vue.use(ToastPlugin);
+
+Vue.use(messagePlugin);
+Vue.filter('date', dateFilter);
 
 const app = new Vue({
     el: '#app',
