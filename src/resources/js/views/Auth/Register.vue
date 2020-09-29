@@ -119,6 +119,9 @@ export default {
             name: null,
             agree: false
         },
+        error: false,
+        errors: {},
+        success: false
     }),
     validations: {
         form: {
@@ -142,6 +145,7 @@ export default {
             return $dirty ? !$error : null;
         },
         onSubmit() {
+            console.log(this.$v.form, this.$v.form.$anyError);
             this.$v.form.$touch();
             if (this.$v.form.$anyError) {
                 return;
@@ -151,7 +155,22 @@ export default {
                 password: this.form.password,
                 name: this.form.name
             }
-            this.$router.push('/');
+
+            console.log(formData);
+            let app = this
+            this.$auth.register({
+                data: formData,
+                success: function () {
+                    app.success = true
+                },
+                error: function (resp) {
+                    app.error = true;
+                    app.errors = resp.response.data.errors;
+                },
+                redirect: null
+            });
+
+            //this.$router.push('/');
         }
     },
 }

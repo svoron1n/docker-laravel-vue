@@ -88,6 +88,7 @@ export default {
             email: null,
             password: null,
         },
+        error: false
     }),
     validations: {
         form: {
@@ -116,11 +117,22 @@ export default {
             if (this.$v.form.$anyError) {
                 return;
             }
-            const fromData = {
+            const formData = {
                 email: this.form.email,
                 password: this.form.password
             }
-            this.$router.push('/');
+
+            let app = this
+            this.$auth.login({
+                params: formData,
+                success: function () {},
+                error: function () {},
+                rememberMe: true,
+                redirect: '/',
+                fetchUser: true,
+            });
+
+            //this.$router.push('/');
         }
     },
 }

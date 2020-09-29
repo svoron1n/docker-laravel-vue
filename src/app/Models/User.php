@@ -12,18 +12,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 /**
  * @property int         $id
- * @property string      $login
- * @property string      $display_name
+ * @property string      $email
+ * @property string      $name
  * @property string      $password Password hash
  * @property string      $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property Carbon|null $deleted_at
  */
-class User extends AbstractBaseModel implements AuthenticatableContract, AuthorizableContract
+class User extends AbstractBaseModel implements AuthenticatableContract, AuthorizableContract, JWTSubject
 {
     use Authenticatable, Authorizable, Notifiable, SoftDeletes;
 
@@ -40,8 +41,8 @@ class User extends AbstractBaseModel implements AuthenticatableContract, Authori
      * @var array
      */
     protected $fillable = [
-        'login',
-        'display_name',
+        'email',
+        'name',
         'password',
     ];
 
@@ -54,6 +55,10 @@ class User extends AbstractBaseModel implements AuthenticatableContract, Authori
         'password',
         'remember_token',
     ];
+    /**
+     * @var mixed
+     */
+    private $name;
 
     /**
      * Generate password hash.
@@ -82,5 +87,14 @@ class User extends AbstractBaseModel implements AuthenticatableContract, Authori
         }
 
         $this->attributes['password'] = $value;
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

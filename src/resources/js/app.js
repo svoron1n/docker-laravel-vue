@@ -12,6 +12,11 @@ import router from './router';
 import App from './components/App';
 import { BootstrapVue, IconsPlugin, BootstrapVueIcons, ToastPlugin } from 'bootstrap-vue';
 
+import axios from 'axios';
+import VueAuth from '@websanova/vue-auth';
+import VueAxios from 'vue-axios';
+import auth from './auth';
+
 import dateFilter from './filters/date.filter';
 import messagePlugin from './utils/message.plugin';
 
@@ -26,7 +31,15 @@ import 'bootstrap-vue/dist/bootstrap-vue-icons.min.css';
  */
 
 
+//Vue.use(VueRouter);
+
+// Set Vue router
+Vue.router = router;
 Vue.use(VueRouter);
+// Set Vue authentication
+Vue.use(VueAxios, axios);
+axios.defaults.baseURL = 'http://127.0.0.1:9999/api';
+Vue.use(VueAuth, auth);
 
 // Install BootstrapVue
 Vue.use(BootstrapVue);

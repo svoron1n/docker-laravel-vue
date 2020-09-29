@@ -1,8 +1,5 @@
 export default function dateFilter(value, format = 'date') {
-    console.log(value);
-    const options = {
-
-    }
+    const options = {}
 
     if (format.includes('date')) {
         options.day = '2-digit';

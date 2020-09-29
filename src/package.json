@@ -22,12 +22,16 @@
         "sass": "^1.26.11",
         "sass-loader": "^8.0.2",
         "vue": "^2.6.12",
+        "vue-axios": "^2.1.5",
+        "vue-loader": "^15.9.3",
         "vue-router": "^3.4.5",
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "@websanova/vue-auth": "^3.3.4",
         "bootstrap-vue": "^2.17.3",
         "mdbvue": "^6.7.1",
+        "vue-resource": "^1.5.1",
         "vuelidate": "^0.7.5"
     }
 }

@@ -34,8 +34,7 @@
                             Профиль
                         </b-dropdown-item>
                         <b-dropdown-item
-                            href="#"
-                            @click.prevent="logout"
+                            @click.prevent="logout()"
                         >
                             <b-icon icon="power" aria-hidden="true"></b-icon>
                             Выйти
@@ -58,8 +57,11 @@ export default {
     }),
     methods: {
         logout() {
-            console.log('logout');
-            this.$router.push('/login?message=logout');
+            this.$auth.logout({
+                success: function () {},
+                error: function () {},
+                redirect: '/login?message=logout'
+            });
         }
     }
 }
